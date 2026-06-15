@@ -71,8 +71,8 @@ importers:
         specifier: ^6.14.0
         version: 6.14.2
       '@clickhouse/client':
-        specifier: ^1.8.1
-        version: 1.18.2
+        specifier: head
+        version: 1.21.0-head.68dd619.1
       '@dqbd/tiktoken':
         specifier: ^1.0.22
         version: 1.0.22
@@ -748,11 +748,11 @@ packages:
   '@bull-board/ui@6.14.2':
     resolution: {integrity: sha512-OTCsBbMAhYoB2NJc6FxkkREWWPUFvEhL2Az1gAKpdNOBqup4CsKj7eBK3rcWSRLZ4LnaOaPK8E8tiogkhrRuOA==}
 
-  '@clickhouse/client-common@1.18.2':
-    resolution: {integrity: sha512-J0SG6q9V31ydxonglpj9xhNRsUxCsF71iEZ784yldqMYwsHixj/9xHFDgBDX3DuMiDx/kPDfXnf+pimp08wIBA==}
+  '@clickhouse/client-common@1.21.0-head.68dd619.1':
+    resolution: {integrity: sha512-WfndD9WKYE2KFCo0sNTUK2v77fnzMBLbHtPuzr/x0/W/dV+x4FQcx/e8+hLBtz99LqvPQ9Dqw10cmczIe/CIzw==}
 
-  '@clickhouse/client@1.18.2':
-    resolution: {integrity: sha512-fuquQswRSHWM6D079ZeuGqkMOsqtcUPL06UdTnowmoeeYjVrqisfVmvnw8pc3OeKS4kVb91oygb/MfLDiMs0TQ==}
+  '@clickhouse/client@1.21.0-head.68dd619.1':
+    resolution: {integrity: sha512-miP4psfX1pEyyKIbjbNH0ww/J/AFtovQF1klY8FRGVW4bKi2nh5Yu9F/mYo2m1Rw1eFvPgCqPefv9Y6WnbYd2Q==}
     engines: {node: '>=16'}
 
   '@coinbase/cdp-sdk@1.33.0':
@@ -6304,11 +6304,11 @@ snapshots:
     dependencies:
       '@bull-board/api': 6.14.2(@bull-board/ui@6.14.2)
 
-  '@clickhouse/client-common@1.18.2': {}
+  '@clickhouse/client-common@1.21.0-head.68dd619.1': {}
 
-  '@clickhouse/client@1.18.2':
+  '@clickhouse/client@1.21.0-head.68dd619.1':
     dependencies:
-      '@clickhouse/client-common': 1.18.2
+      '@clickhouse/client-common': 1.21.0-head.68dd619.1
 
   '@coinbase/cdp-sdk@1.33.0(bufferutil@4.0.9)(encoding@0.1.13)(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.2)(utf-8-validate@5.0.10)':
     dependencies:
