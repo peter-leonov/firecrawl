@@ -69,28 +69,28 @@ jobs:
         include:
           - platform: linux/amd64
             platform_suffix: linux-amd64
-            runner: blacksmith-4vcpu-ubuntu-2404
+            runner: ubuntu-latest
           - platform: linux/arm64
             platform_suffix: linux-arm64
-            runner: blacksmith-4vcpu-ubuntu-2404-arm
+            runner: ubuntu-latest-arm
     defaults:
       run:
-        working-directory: './apps/api'
+        working-directory: "./apps/api"
     steps:
-      - name: 'Checkout GitHub Action'
+      - name: "Checkout GitHub Action"
         uses: actions/checkout@main
 
       - name: Setup Blacksmith Builder
         uses: useblacksmith/setup-docker-builder@ef12d5b165b596e3aa44ea8198d8fde563eab402 # v1
 
-      - name: 'Login to GitHub Container Registry'
+      - name: "Login to GitHub Container Registry"
         uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
           registry: ghcr.io
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
 
-      - name: 'Build and Push Image'
+      - name: "Build and Push Image"
         uses: useblacksmith/build-push-action@30c71162f16ea2c27c3e21523255d209b8b538c1 # v2
         with:
           context: ./apps/api
@@ -110,7 +110,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 'Login to GitHub Container Registry'
+      - name: "Login to GitHub Container Registry"
         uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
           registry: ghcr.io
@@ -139,7 +139,7 @@ jobs:
           git tag -a "${RELEASE_TAG}" "${GITHUB_SHA}" -m "Release API image ${RELEASE_TAG}"
           git push origin "${RELEASE_TAG}"
 
-      - name: 'Create and Push Multi-Arch Manifest'
+      - name: "Create and Push Multi-Arch Manifest"
         env:
           IMAGE: ${{ needs.version.outputs.image }}
           VERSION: ${{ needs.version.outputs.version }}

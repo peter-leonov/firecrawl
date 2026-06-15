@@ -99,6 +99,8 @@ app = Firecrawl(api_key="fc-YOUR_API_KEY")
 search_result = app.search("firecrawl", limit=5)
 ```
 
+noop
+
 <details>
 <summary><b>Node.js / cURL / CLI</b></summary>
 
