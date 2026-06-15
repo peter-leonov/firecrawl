@@ -17,7 +17,7 @@ on:
 jobs:
   build-and-test:
     name: Build and Test
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: ubuntu-latest
     env:
       HAS_API_KEY: ${{ secrets.FIRECRAWL_API_KEY != '' }}
     if: >-
@@ -30,7 +30,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'
+          php-version: "8.3"
           tools: composer:v2
           coverage: none
 

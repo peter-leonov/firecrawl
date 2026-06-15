@@ -15,11 +15,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        engine: ['playwright', 'fetch'] # unsure if we need both of these
-        proxy: ['proxy', 'no-proxy'] # proxy / no-proxy run different tests, keep both
-        search: ['searxng'] # disabled google for now, should be fine with just Searxng
-        ai: ['openai'] # AI only should be fine, as it simply adds tests, if non-AI fails, AI will fail.
-        nuq: ['postgres']
+        engine: ["playwright", "fetch"] # unsure if we need both of these
+        proxy: ["proxy", "no-proxy"] # proxy / no-proxy run different tests, keep both
+        search: ["searxng"] # disabled google for now, should be fine with just Searxng
+        ai: ["openai"] # AI only should be fine, as it simply adds tests, if non-AI fails, AI will fail.
+        nuq: ["postgres"]
         include:
           # Exercise the self-hosted API/harness path through the FDB NuQ router
           # without doubling the expensive Playwright/proxy matrix.
@@ -34,7 +34,7 @@ jobs:
         # proxy: ["proxy", "no-proxy"]
         # search: ["searxng", "google"]
         # ai: ["openai", "no-ai"]
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: ubuntu-latest
     services:
       redis:
         image: redis
@@ -204,7 +204,7 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
         working-directory: apps/api
         env:
-          npm_config_ignore_scripts: 'true'
+          npm_config_ignore_scripts: "true"
 
       - name: Install test site dependencies
         run: pnpm install --frozen-lockfile
@@ -254,7 +254,7 @@ jobs:
         run: pnpm harness pnpm test:snips
         working-directory: apps/api
         env:
-          npm_config_ignore_scripts: 'true' # required currently to prevent re-building cached native lib
+          npm_config_ignore_scripts: "true" # required currently to prevent re-building cached native lib
 
       - name: Publish test report
         if: always()
@@ -570,7 +570,7 @@ jobs:
 
   nuq-fdb-core:
     name: NuQ FoundationDB core tests
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: ubuntu-latest
     env:
       FDB_VERSION: 7.3.63
     steps:
@@ -593,7 +593,7 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
         working-directory: apps/api
         env:
-          npm_config_ignore_scripts: 'true'
+          npm_config_ignore_scripts: "true"
 
       - name: Install FoundationDB client library
         run: |

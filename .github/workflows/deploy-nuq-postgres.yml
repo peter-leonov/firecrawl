@@ -10,22 +10,22 @@ on:
 
 jobs:
   push-app-image:
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: './apps/nuq-postgres'
+        working-directory: "./apps/nuq-postgres"
     steps:
-      - name: 'Checkout GitHub Action'
+      - name: "Checkout GitHub Action"
         uses: actions/checkout@main
 
-      - name: 'Login to GitHub Container Registry'
+      - name: "Login to GitHub Container Registry"
         uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
           registry: ghcr.io
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
 
-      - name: 'Build NuQ Postgres Image'
+      - name: "Build NuQ Postgres Image"
         run: |
           docker build . --tag ghcr.io/firecrawl/nuq-postgres:latest
           docker push ghcr.io/firecrawl/nuq-postgres:latest

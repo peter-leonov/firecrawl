@@ -13,7 +13,7 @@ env:
 jobs:
   test:
     name: Run tests
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       - name: Install pnpm
@@ -25,14 +25,14 @@ jobs:
         with:
           node-version: "20"
           cache: "pnpm"
-          cache-dependency-path: './apps/js-sdk/firecrawl/pnpm-lock.yaml'
+          cache-dependency-path: "./apps/js-sdk/firecrawl/pnpm-lock.yaml"
       - name: Tailscale
         uses: tailscale/github-action@306e68a486fd2350f2bfc3b19fcd143891a4a2d8 # v4
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
           tags: tag:ci
-          use-cache: 'true'
+          use-cache: "true"
       - name: Install dependencies
         run: pnpm install
         working-directory: ./apps/js-sdk/firecrawl
